@@ -23,6 +23,6 @@ function addCart(){
 }
 for (i = 0; i < addtoCartBtn.length; i++) {
 addtoCartBtn[i].addEventListener("click", function(){
- addtocartBtnClicked();
+ addtocartBtnClickedkkk();
 })}
 
