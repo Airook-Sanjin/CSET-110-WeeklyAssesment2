@@ -1,5 +1,6 @@
+
 let cartSection = document.getElementById("cart-section");
-let cartHeader = document.getElementById("cart-header");
+
 let addtoCartBtn = document.getElementsByClassName("shop-item-button");
 let removeBtn = document.getElementsByClassName("btn-danger");
 let purchaseBtn = document.getElementsByClassName("btn-Purchase");
@@ -12,17 +13,32 @@ let cartTitle = document.getElementsByClassName("cart-item-title");
 let cartPrice = document.getElementsByClassName("cart-price");
 var clicked = false;
 
-function addtocartBtnClicked(){
-if(!clicked){
+function addtocartBtnClicked() {
+  if (!clicked) {
     cartSection.style.display = "block";
-    click = true;
+    clicked = true;
+  }
 }
+function addCart(title, price) {
+  let cartrow = document.createElement('div')
+  
 }
-function addCart(){
-    
-}
+
 for (i = 0; i < addtoCartBtn.length; i++) {
-addtoCartBtn[i].addEventListener("click", function(){
- addtocartBtnClickedkkk();
-})}
+  addtoCartBtn[i].addEventListener("click", function () {
+    addtocartBtnClicked();
+
+    // addCart(item)
+  });
+}
+for(let i = 0;i<addtoCartBtn.length; i++) {
+    addtoCartBtn[i].addEventListener('click' , (event) => {
+        alert(`you pressed"${i}"`)
+        let button = evt.target
+        let shopitem = button.parentElement.parentElement
+        let title = shopitem.getElementsByClassName('shop-item-title')[0].innerText
+        let price = shopitem.getElementsByClassName('shop-item-price')[0].innerText
+        
+    })
+}
 
