@@ -20,6 +20,17 @@ function ready() {
     let button = addtoCartBtn[i];
     button.addEventListener("click", addtoCartClicked);
   }
+  document.getElementsByClassName("btn-purchase")[0].addEventListener("click", purchased);
+}
+function purchased(event){
+  let cartItems = document.getElementsByClassName('cart-items')[0];
+  while(cartItems.hasChildNodes()){
+    cartItems.removeChild(cartItems.firstChild)
+    
+  }
+  alert("Thank you for your purchase");
+  updateCartTotal();
+  
 }
 function removeCartItem(event) {
   let buttonClicked = event.target;
@@ -33,6 +44,7 @@ function quantityChanged(event) {
   }
   updateCartTotal();
 }
+
 function addtoCartClicked(event) {
   let button = event.target;
   let shopItem = button.parentElement.parentElement;
@@ -52,6 +64,7 @@ function addItemtoCart(title, price, image) {
       alert("This Item is already in cart");
       return;
     }
+    updateCartTotal();
   }
   let cartRowContent = `
   <div class="cart-item cart-column">
@@ -88,10 +101,11 @@ function updateCartTotal() {
       "cart-quantity-input"
     )[0];
     let price = parseFloat(priceElement.innerText.replace(`$`, ``));
-    let quantity = ParseInt(quantityElement.value);
-    total += (price * quantity);
+    let quantity = parseInt(quantityElement.value);
+    total += price * quantity;
   }
-  total = Math.round(total * 100)/100
-  document.getElementsByClassName("cart-total-price")[0].innerText =
-    `$` + total;
+  total = Math.round(total * 100) / 100;
+  document.getElementsByClassName(
+    "cart-total-price"
+  )[0].innerHTML = `$${total.toFixed(2)}`;
 }
